@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography Portfolio</title>
+    <style>
+        body {
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        #imageContainer {
+            column-count: 1;
+            column-gap: 10px;
+        }           
+
+        @media (min-width: 600px) { /* When screen is larger than 600px, use a 2-column layout */
+            #imageContainer {
+                column-count: 2;
+            }
+        }
+
+        @media (min-width: 900px) { /* When screen is larger than 900px, use a 3-column layout */
+            #imageContainer {
+                column-count: 3;
+            }
+        }
+
+        @media (min-width: 1200px) { /* When screen is larger than 900px, use a 3-column layout */
+            #imageContainer {
+                column-count: 4;
+            }
+        }
+
+        .image {
+            width: 100%; /* Each image takes up the entire column width */
+            margin: 5px 0; /* Adjust spacing between images */
+            break-inside: avoid-column; /* Prevent images from breaking across columns */
+        }
+
+        .image img {
+            width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            object-fit: cover;
+        }
+
+        .modal-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+            z-index: 900; /* Behind the modal */
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px); /* Applies a blur effect to the background */
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            margin: auto;
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        /* Close button styles (unchanged) */
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #FFF;
+            cursor: pointer;
+            font-size: 30px;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div id="imageContainer"></div>
+
+    <!-- Modal for enlarged image -->
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modalImage" alt="Image">
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeModal()"></div>
+
+    <script>
+        const imageContainer = document.getElementById("imageContainer");
+        const thumbnailFolder = "thumbnails/"; // Folder with thumbnail images
+        const galleryFolder = "gallery/";     // Folder with full-sized images
+
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+
+        function loadImages() {
+            fetch(thumbnailFolder)
+                .then((response) => response.text())
+                .then((data) => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(data, "text/html");
+                    const links = doc.querySelectorAll("a");
+
+                    links.forEach((link) => {
+                        if (link.href.match(/\.(jpe?g|png|gif)$/)) {
+                            const image = document.createElement("div");
+                            image.className = "image";
+                            const img = document.createElement("img");
+                            img.src = thumbnailFolder + link.href.split('/').pop(); // Load thumbnail
+                            img.alt = link.textContent;
+                            img.onclick = () => openModal(galleryFolder + link.href.split('/').pop()); // Load full-sized image
+                            image.appendChild(img);
+                            imageContainer.appendChild(image);
+                        }
+                    });
+                })
+                .catch((error) => console.error(error));
+        }
+
+        function openModal(src) {
+            modal.style.display = "block";
+            modalImg.src = src;
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        loadImages();
+    </script>
+</body>
+</html>
