@@ -117,34 +117,27 @@
 
     <script>
         const imageContainer = document.getElementById("imageContainer");
-        const thumbnailFolder = "thumbnails/"; // Relative path to the thumbnails folder
-        const galleryFolder = "gallery/";     // Relative path to the gallery folder
+        const imageListFile = "imageList.json"; // JSON file with image paths
 
         const modal = document.getElementById("imageModal");
         const modalImg = document.getElementById("modalImage");
 
         function loadImages() {
-            fetch(thumbnailFolder)
-                .then((response) => response.text())
-                .then((data) => {
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(data, "text/html");
-                    const links = doc.querySelectorAll("a");
-
-                    links.forEach((link) => {
-                        if (link.href.match(/\.(jpe?g|png|gif)$/)) {
-                            const image = document.createElement("div");
-                            image.className = "image";
-                            const img = document.createElement("img");
-                            img.src = thumbnailFolder + link.href.split('/').pop(); // Load thumbnail
-                            img.alt = link.textContent;
-                            img.onclick = () => openModal(galleryFolder + link.href.split('/').pop()); // Load full-sized image
-                            image.appendChild(img);
-                            imageContainer.appendChild(image);
-                        }
+            fetch(imageListFile)
+                .then(response => response.json())
+                .then(images => {
+                    images.forEach(imagePath => {
+                        const image = document.createElement("div");
+                        image.className = "image";
+                        const img = document.createElement("img");
+                        img.src = imagePath;
+                        img.alt = imagePath;
+                        img.onclick = () => openModal(imagePath);
+                        image.appendChild(img);
+                        imageContainer.appendChild(image);
                     });
                 })
-                .catch((error) => console.error(error));
+                .catch(error => console.error(error));
         }
 
         function openModal(src) {
