@@ -111,46 +111,65 @@
 
     <script>
         const imageContainer = document.getElementById("imageContainer");
-        const thumbnailFolder = "./thumbnails/";
-        const galleryFolder = "./gallery/";
+        
+        // Define the image sources for your gallery and thumbnails
+        const imageSources = [
+            "/gallery/DSC01727.jpg",
+            "/gallery/DSC01728.jpg",
+            "/gallery/DSC01349.jpg",
+            "/gallery/DSC01364.jpg",
+            "/gallery/DSC01426.jpg",
+            "/gallery/DSC01622.jpg",
+            "/gallery/DSC01630.jpg",
+            "/gallery/DSC01653.jpg",
+            "/gallery/DSC01663.jpg",
+            "/gallery/DSC01667.jpg",
+            "/gallery/DSC01669.jpg",
+            "/gallery/DSC01693.jpg",
+            "/gallery/DSC01709.jpg",
+            "/gallery/DSC01724.jpg",
+            "/gallery/DSC01726.jpg",
+        ];
+    
+        const thumbnailSources = [
+            "/thumbnails/DSC01727.jpg",
+            "/thumbnails/DSC01728.jpg",
+            "/thumbnails/DSC01349.jpg",
+            "/thumbnails/DSC01364.jpg",
+            "/thumbnails/DSC01426.jpg",
+            "/thumbnails/DSC01622.jpg",
+            "/thumbnails/DSC01630.jpg",
+            "/thumbnails/DSC01653.jpg",
+            "/thumbnails/DSC01663.jpg",
+            "/thumbnails/DSC01667.jpg",
+            "/thumbnails/DSC01669.jpg",
+            "/thumbnails/DSC01693.jpg",
+            "/thumbnails/DSC01709.jpg",
+            "/thumbnails/DSC01724.jpg",
+            "/thumbnails/DSC01726.jpg",
+        ];
+    
+        // Loop through the image sources and create image elements
+        for (let i = 0; i < imageSources.length; i++) {
+            const image = document.createElement("div");
+            image.className = "image";
+            const img = document.createElement("img");
+            img.src = thumbnailSources[i];
+            img.alt = imageSources[i];
+            img.onclick = () => openModal(imageSources[i]);
+            image.appendChild(img);
+            imageContainer.appendChild(image);
+        }
     
         const modal = document.getElementById("imageModal");
         const modalImg = document.getElementById("modalImage");
     
         let currentImageIndex = 0;
-        let images = [];
-    
-        function loadImages() {
-            fetch(thumbnailFolder)
-                .then((response) => response.text())
-                .then((data) => {
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(data, "text/html");
-                    const links = doc.querySelectorAll("a");
-    
-                    links.forEach((link) => {
-                        if (link.href.match(/\.(jpe?g|png|gif)$/)) {
-                            const filename = link.href.split('/').pop();
-                            images.push(galleryFolder + filename);
-    
-                            const image = document.createElement("div");
-                            image.className = "image";
-                            const img = document.createElement("img");
-                            img.src = thumbnailFolder + filename;
-                            img.alt = filename;
-                            img.onclick = () => openModal(galleryFolder + filename);
-                            image.appendChild(img);
-                            imageContainer.appendChild(image);
-                        }
-                    });
-                })
-                .catch((error) => console.error(error));
-        }
-    
+        
         function openModal(src) {
             modal.style.display = "block";
             modalImg.src = src;
-            currentImageIndex = images.indexOf(src);
+            currentImageIndex = imageSources.indexOf(src);
         }
     
         function closeModal() {
@@ -158,29 +177,28 @@
         }
     
         function showNextImage() {
-            currentImageIndex = (currentImageIndex + 1) % images.length;
-            modalImg.src = images[currentImageIndex];
+            currentImageIndex = (currentImageIndex + 1) % imageSources.length;
+            modalImg.src = imageSources[currentImageIndex];
         }
     
         function showPreviousImage() {
-            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-            modalImg.src = images[currentImageIndex];
+            currentImageIndex = (currentImageIndex - 1 + imageSources.length) % imageSources.length;
+            modalImg.src = imageSources[currentImageIndex];
         }
-    
-        loadImages();
     
         document.addEventListener("keydown", (e) => {
-    if (modal.style.display === "block") {
-        if (e.key === "ArrowLeft") {
-            showPreviousImage();
-        } else if (e.key === "ArrowRight") {
-            showNextImage();
-        } else if (e.key === "Escape") {
-            closeModal();
-        }
-    }
-});
+            if (modal.style.display === "block") {
+                if (e.key === "ArrowLeft") {
+                    showPreviousImage();
+                } else if (e.key === "ArrowRight") {
+                    showNextImage();
+                } else if (e.key === "Escape") {
+                    closeModal();
+                }
+            }
+        });
     </script>
+    
     
 </body>
 </html>
