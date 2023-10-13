@@ -35,6 +35,8 @@
             }
         }
 
+        
+
         .image {
             width: 100%; /* Each image takes up the entire column width */
             margin: 5px 0; /* Adjust spacing between images */
@@ -117,32 +119,26 @@
 
     <script>
         const imageContainer = document.getElementById("imageContainer");
-        const thumbnailFolder = "thumbnails/"; // Relative path to the thumbnails folder
-        const galleryFolder = "gallery/";     // Relative path to the gallery folder
-
         const modal = document.getElementById("imageModal");
         const modalImg = document.getElementById("modalImage");
 
         function loadImages() {
-            fetch(thumbnailFolder)
-                .then((response) => response.text())
+            fetch("imageList.json")
+                .then((response) => response.json())
                 .then((data) => {
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(data, "text/html");
-                    const links = doc.querySelectorAll("a");
+                    const thumbnails = data.thumbnails;
+                    const gallery = data.gallery;
 
-                    links.forEach((link) => {
-                        if (link.href.match(/\.(jpe?g|png|gif)$/)) {
-                            const image = document.createElement("div");
-                            image.className = "image";
-                            const img = document.createElement("img");
-                            img.src = thumbnailFolder + link.href.split('/').pop(); // Load thumbnail
-                            img.alt = link.textContent;
-                            img.onclick = () => openModal(galleryFolder + link.href.split('/').pop()); // Load full-sized image
-                            image.appendChild(img);
-                            imageContainer.appendChild(image);
-                        }
-                    });
+                    for (let i = 0; i < thumbnails.length; i++) {
+                        const image = document.createElement("div");
+                        image.className = "image";
+                        const img = document.createElement("img");
+                        img.src = thumbnails[i];
+                        img.alt = thumbnails[i];
+                        img.onclick = () => openModal(gallery[i]);
+                        image.appendChild(img);
+                        imageContainer.appendChild(image);
+                    }
                 })
                 .catch((error) => console.error(error));
         }
