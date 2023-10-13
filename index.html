@@ -120,10 +120,6 @@
     <script>
         const imageContainer = document.getElementById("imageContainer");
         const thumbnailFolder = "thumbnails/"; // Relative path to the thumbnails folder
-        const galleryFolder = "gallery/";     // Relative path to the gallery folder
-
-        const modal = document.getElementById("imageModal");
-        const modalImg = document.getElementById("modalImage");
 
         function loadImages() {
             fetch(thumbnailFolder)
@@ -138,9 +134,9 @@
                             const image = document.createElement("div");
                             image.className = "image";
                             const img = document.createElement("img");
-                            img.src = thumbnailFolder + link.href.split('/').pop(); // Load thumbnail
+                            img.src = "https://github.com/krfix/a6000/blob/main/" + thumbnailFolder + link.href.split('/').pop(); // GitHub URL
                             img.alt = link.textContent;
-                            img.onclick = () => openModal(galleryFolder + link.href.split('/').pop()); // Load full-sized image
+                            img.onclick = () => openModal("https://github.com/krfix/a6000/blob/main/" + link.href.split('/').pop()); // GitHub URL
                             image.appendChild(img);
                             imageContainer.appendChild(image);
                         }
@@ -155,7 +151,7 @@
         }
 
         function closeModal() {
-            modal.style.display = "none";
+            modal.style display = "none";
         }
 
         loadImages();
