@@ -3,7 +3,7 @@ import exifread
 import json
 
 # Input and output directories
-feed_folder = "source"
+feed_folder = "gallery"
 gallery_folder = "gallery"
 thumbnails_folder = "thumbnails"
 fetchlist_path = "fetchlist.json"
