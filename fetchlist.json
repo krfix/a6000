@@ -1,8 +1,8 @@
 {
     "images": [
         {
-            "src": "./gallery/DSC01609.webp",
-            "thumbnailSrc": "./thumbnails/DSC01609.webp",
+            "src": "./gallery/DSC01609.jpg",
+            "thumbnailSrc": "./thumbnails/DSC01609.jpg",
             "info": {
                 "Dimensions": "6000x4000",
                 "FocalLength": "50mm",
@@ -14,8 +14,8 @@
             }
         },
         {
-            "src": "./gallery/DSC01622.webp",
-            "thumbnailSrc": "./thumbnails/DSC01622.webp",
+            "src": "./gallery/DSC01622.jpg",
+            "thumbnailSrc": "./thumbnails/DSC01622.jpg",
             "info": {
                 "Dimensions": "6000x4000",
                 "FocalLength": "50mm",
@@ -27,8 +27,8 @@
             }
         },
         {
-            "src": "./gallery/DSC01630.webp",
-            "thumbnailSrc": "./thumbnails/DSC01630.webp",
+            "src": "./gallery/DSC01630.jpg",
+            "thumbnailSrc": "./thumbnails/DSC01630.jpg",
             "info": {
                 "Dimensions": "6000x4000",
                 "FocalLength": "50mm",
@@ -40,8 +40,8 @@
             }
         },
         {
-            "src": "./gallery/DSC01651.webp",
-            "thumbnailSrc": "./thumbnails/DSC01651.webp",
+            "src": "./gallery/DSC01651.jpg",
+            "thumbnailSrc": "./thumbnails/DSC01651.jpg",
             "info": {
                 "Dimensions": "6000x4000",
                 "FocalLength": "50mm",
@@ -53,8 +53,8 @@
             }
         },
         {
-            "src": "./gallery/DSC01663.webp",
-            "thumbnailSrc": "./thumbnails/DSC01663.webp",
+            "src": "./gallery/DSC01663.jpg",
+            "thumbnailSrc": "./thumbnails/DSC01663.jpg",
             "info": {
                 "Dimensions": "6000x4000",
                 "FocalLength": "40mm",
@@ -66,8 +66,8 @@
             }
         },
         {
-            "src": "./gallery/DSC01666.webp",
-            "thumbnailSrc": "./thumbnails/DSC01666.webp",
+            "src": "./gallery/DSC01666.jpg",
+            "thumbnailSrc": "./thumbnails/DSC01666.jpg",
             "info": {
                 "Dimensions": "6000x4000",
                 "FocalLength": "50mm",
@@ -79,8 +79,8 @@
             }
         },
         {
-            "src": "./gallery/DSC01669.webp",
-            "thumbnailSrc": "./thumbnails/DSC01669.webp",
+            "src": "./gallery/DSC01669.jpg",
+            "thumbnailSrc": "./thumbnails/DSC01669.jpg",
             "info": {
                 "Dimensions": "6000x4000",
                 "FocalLength": "50mm",
@@ -92,8 +92,8 @@
             }
         },
         {
-            "src": "./gallery/DSC01676.webp",
-            "thumbnailSrc": "./thumbnails/DSC01676.webp",
+            "src": "./gallery/DSC01676.jpg",
+            "thumbnailSrc": "./thumbnails/DSC01676.jpg",
             "info": {
                 "Dimensions": "6000x4000",
                 "FocalLength": "50mm",
@@ -105,8 +105,8 @@
             }
         },
         {
-            "src": "./gallery/DSC01693.webp",
-            "thumbnailSrc": "./thumbnails/DSC01693.webp",
+            "src": "./gallery/DSC01693.jpg",
+            "thumbnailSrc": "./thumbnails/DSC01693.jpg",
             "info": {
                 "Dimensions": "6000x4000",
                 "FocalLength": "50mm",
@@ -118,8 +118,8 @@
             }
         },
         {
-            "src": "./gallery/DSC01709.webp",
-            "thumbnailSrc": "./thumbnails/DSC01709.webp",
+            "src": "./gallery/DSC01709.jpg",
+            "thumbnailSrc": "./thumbnails/DSC01709.jpg",
             "info": {
                 "Dimensions": "6000x4000",
                 "FocalLength": "50mm",
@@ -131,8 +131,8 @@
             }
         },
         {
-            "src": "./gallery/DSC01717.webp",
-            "thumbnailSrc": "./thumbnails/DSC01717.webp",
+            "src": "./gallery/DSC01717.jpg",
+            "thumbnailSrc": "./thumbnails/DSC01717.jpg",
             "info": {
                 "Dimensions": "6000x4000",
                 "FocalLength": "50mm",
@@ -144,8 +144,8 @@
             }
         },
         {
-            "src": "./gallery/DSC01726.webp",
-            "thumbnailSrc": "./thumbnails/DSC01726.webp",
+            "src": "./gallery/DSC01726.jpg",
+            "thumbnailSrc": "./thumbnails/DSC01726.jpg",
             "info": {
                 "Dimensions": "6000x4000",
                 "FocalLength": "50mm",
@@ -157,8 +157,8 @@
             }
         },
         {
-            "src": "./gallery/DSC01727.webp",
-            "thumbnailSrc": "./thumbnails/DSC01727.webp",
+            "src": "./gallery/DSC01727.jpg",
+            "thumbnailSrc": "./thumbnails/DSC01727.jpg",
             "info": {
                 "Dimensions": "6000x4000",
                 "FocalLength": "50mm",
@@ -170,8 +170,8 @@
             }
         },
         {
-            "src": "./gallery/DSC01733.webp",
-            "thumbnailSrc": "./thumbnails/DSC01733.webp",
+            "src": "./gallery/DSC01733.jpg",
+            "thumbnailSrc": "./thumbnails/DSC01733.jpg",
             "info": {
                 "Dimensions": "6000x4000",
                 "FocalLength": "50mm",
@@ -183,8 +183,8 @@
             }
         },
         {
-            "src": "./gallery/DSC01735.webp",
-            "thumbnailSrc": "./thumbnails/DSC01735.webp",
+            "src": "./gallery/DSC01735.jpg",
+            "thumbnailSrc": "./thumbnails/DSC01735.jpg",
             "info": {
                 "Dimensions": "6000x4000",
                 "FocalLength": "50mm",
@@ -196,8 +196,8 @@
             }
         },
         {
-            "src": "./gallery/DSC01736.webp",
-            "thumbnailSrc": "./thumbnails/DSC01736.webp",
+            "src": "./gallery/DSC01736.jpg",
+            "thumbnailSrc": "./thumbnails/DSC01736.jpg",
             "info": {
                 "Dimensions": "6000x4000",
                 "FocalLength": "16mm",
@@ -209,8 +209,8 @@
             }
         },
         {
-            "src": "./gallery/DSC01738.webp",
-            "thumbnailSrc": "./thumbnails/DSC01738.webp",
+            "src": "./gallery/DSC01738.jpg",
+            "thumbnailSrc": "./thumbnails/DSC01738.jpg",
             "info": {
                 "Dimensions": "6000x4000",
                 "FocalLength": "41mm",
@@ -222,8 +222,8 @@
             }
         },
         {
-            "src": "./gallery/DSC01740.webp",
-            "thumbnailSrc": "./thumbnails/DSC01740.webp",
+            "src": "./gallery/DSC01740.jpg",
+            "thumbnailSrc": "./thumbnails/DSC01740.jpg",
             "info": {
                 "Dimensions": "6000x4000",
                 "FocalLength": "50mm",
