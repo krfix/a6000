@@ -238,15 +238,31 @@
                     document.getElementById("Model").textContent = image.info.Model;
                 }
 
-                function showNextImage() {
-                    currentImageIndex = (currentImageIndex + 1) % images.length;
-                    modalImg.src = images[currentImageIndex].src;
-                }
+                modalImg.addEventListener("click", function (e) {
+    const width = this.clientWidth;
+    const x = e.offsetX;
 
-                function showPreviousImage() {
-                    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-                    modalImg.src = images[currentImageIndex].src;
-                }
+    if (x < width / 2) {
+        // Clicked on the left side of the image
+        showPreviousImage();
+    } else {
+        // Clicked on the right side of the image
+        showNextImage();
+    }
+});
+
+                function showNextImage() {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    modalImg.src = images[currentImageIndex].src;
+    updateImageInfo(images[currentImageIndex]);
+}
+
+function showPreviousImage() {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    modalImg.src = images[currentImageIndex].src;
+    updateImageInfo(images[currentImageIndex]);
+}
+
 
                 document.addEventListener("keydown", (e) => {
     if (modal.style.display === "block") {
@@ -257,6 +273,9 @@
         } else if (e.key === "Escape") {
             closeModal();
         }
+
+        
+
 
         // Update image information in the modal
         const currentImage = images[currentImageIndex];
