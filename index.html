@@ -168,34 +168,6 @@
         let currentHoveredThumbnail = null;
         let images = [];
 
-        let touchStartX = null;
-
-modalImg.addEventListener("touchstart", (e) => {
-    touchStartX = e.touches[0].clientX;
-});
-
-modalImg.addEventListener("touchmove", (e) => {
-    if (touchStartX !== null) {
-        const touchX = e.touches[0].clientX;
-        const deltaX = touchX - touchStartX;
-
-        if (deltaX > 50) {
-            // Swipe right, show previous image
-            showPreviousImage();
-            touchStartX = null;
-        } else if (deltaX < -50) {
-            // Swipe left, show next image
-            showNextImage();
-            touchStartX = null;
-        }
-    }
-});
-
-modalImg.addEventListener("touchend", () => {
-    touchStartX = null;
-});
-
-
         function closeModal() {
             modal.style.display = "none";
         }
