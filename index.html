@@ -23,6 +23,34 @@
             column-gap: 5px;
         }
 
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative; /* Make this container relative */
+        }
+
+        .image-info-container {
+            position: absolute;
+            display: flex;
+            margin: 0;
+            bottom: 0; /* Stick to the bottom of the modal */
+            width: flex;
+            background: rgba(0, 0, 0, 0);
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            padding: 10px;
+            overflow-x: auto;
+            color: #FFF;
+        }
+
+        .image-info-container p {
+            display: inline;
+            margin-right: 10px;
+        }
+
+
         @media (min-width: 600px) {
             #imageContainer {
                 column-count: 2;
@@ -111,6 +139,15 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <img id="modalImage" alt="Image">
+            <div class="image-info-container">
+                <p><span id="Dimensions"></span></p>
+                <p><span id="FocalLength"></span></p>
+                <p><span id="Exposure"></span></p>
+                <p><span id="fStop"></span></p>
+                <p><span id="ISO"></span></p>  
+                <p>Lens: <span id="Lens"></span></p>
+                <p><span id="Model"></span></p>
+            </div>
         </div>
     </div>
     <div class="overlay" id="overlay" onclick="closeModal()"></div>
@@ -119,79 +156,88 @@
         const imageContainer = document.getElementById("imageContainer");
         const modal = document.getElementById("imageModal");
         const modalImg = document.getElementById("modalImage");
+        const Dimensions = document.getElementById("Dimensions");
+        const FocalLength = document.getElementById("FocalLength");
+        const Exposure = document.getElementById("Exposure");
+        const fStop = document.getElementById("fStop");
+        const ISO = document.getElementById("ISO");
+        const Lens = document.getElementById("Lens");
+        const Model = document.getElementById("Model");
+
         let currentHoveredThumbnail = null;
-        let imageSources = []; // To store the image sources
-        let thumbnailSources = []; // To store the thumbnail sources
+        let images = [];
 
         function closeModal() {
             modal.style.display = "none";
-        }        
+        }
 
         fetch("fetchlist.json")
-        .then(response => response.json())
-        .then(data => {
-            imageSources = data.imageSources; // Store the image sources
-            thumbnailSources = data.thumbnailSources; // Store the thumbnail sources
+            .then(response => response.json())
+            .then(data => {
+                images = data.images; // Store the image data
 
-            // Loop through the image sources and create image elements
-            for (let i = 0; i < imageSources.length; i++) {
-                const image = document.createElement("div");
-                image.className = "image";
-                const img = document.createElement("img");
-                img.src = thumbnailSources[i];
-                img.alt = imageSources[i];
-                img.setAttribute("data-src", imageSources[i]);
-                img.onmouseover = () => preloadImage(img);
-                img.onclick = () => openModal(imageSources[i]);
-                image.appendChild(img);
-                imageContainer.appendChild(image);
-            }
-
-            function preloadImage(img) {
-                const fullSrc = img.getAttribute("data-src");
-                if (fullSrc) {
-                    const fullImage = new Image();
-                    fullImage.src = fullSrc;
-                    img.removeAttribute("data-src"); // Remove the data-src to prevent duplicate preload
+                // Loop through the image data and create image elements
+                for (let i = 0; i < images.length; i++) {
+                    const image = document.createElement("div");
+                    image.className = "image";
+                    const img = document.createElement("img");
+                    img.src = images[i].thumbnailSrc;
+                    img.alt = images[i].src;
+                    img.setAttribute("data-src", images[i].src);
+                    img.onmouseover = () => preloadImage(img);
+                    img.onclick = () => openModal(images[i]);
+                    image.appendChild(img);
+                    imageContainer.appendChild(image);
                 }
-            }
 
-            let currentImageIndex = 0;
-
-            function openModal(src) {
-                modal.style.display = "block";
-                modalImg.src = src;
-                currentImageIndex = imageSources.indexOf(src);
-            }
-
-          
-
-            function showNextImage() {
-                currentImageIndex = (currentImageIndex + 1) % imageSources.length;
-                modalImg.src = imageSources[currentImageIndex];
-            }
-
-            function showPreviousImage() {
-                currentImageIndex = (currentImageIndex - 1 + imageSources.length) % imageSources.length;
-                modalImg.src = imageSources[currentImageIndex];
-            }
-
-        
-
-            document.addEventListener("keydown", (e) => {
-                if (modal.style.display === "block") {
-                    if (e.key === "ArrowLeft") {
-                        showPreviousImage();
-                    } else if (e.key === "ArrowRight") {
-                        showNextImage();
-                    } else if (e.key === "Escape") {
-                        closeModal();
+                function preloadImage(img) {
+                    const fullSrc = img.getAttribute("data-src");
+                    if (fullSrc) {
+                        const fullImage = new Image();
+                        fullImage.src = fullSrc;
+                        img.removeAttribute("data-src"); // Remove the data-src to prevent duplicate preload
                     }
                 }
 
-                
+                let currentImageIndex = 0;
+
+                function openModal(image) {
+                    modal.style.display = "block";
+                    modalImg.src = image.src;
+                    currentImageIndex = images.indexOf(image);
+
+                    // Display the additional information in the modal
+                    document.getElementById("Dimensions").textContent = image.info.Dimensions;
+                    document.getElementById("FocalLength").textContent = image.info.FocalLength;
+                    document.getElementById("Exposure").textContent = image.info.Exposure;
+                    document.getElementById("fStop").textContent = image.info.fStop;
+                    document.getElementById("ISO").textContent = image.info.ISO;
+                    document.getElementById("Lens").textContent = image.info.Lens;
+                    document.getElementById("Model").textContent = image.info.Model;
+                }
+
+                function showNextImage() {
+                    currentImageIndex = (currentImageIndex + 1) % images.length;
+                    modalImg.src = images[currentImageIndex].src;
+                }
+
+                function showPreviousImage() {
+                    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                    modalImg.src = images[currentImageIndex].src;
+                }
+
+                document.addEventListener("keydown", (e) => {
+                    if (modal.style.display === "block") {
+                        if (e.key === "ArrowLeft") {
+                            showPreviousImage();
+                        } else if (e.key === "ArrowRight") {
+                            showNextImage();
+                        } else if (e.key === "Escape") {
+                            closeModal();
+                        }
+                    }
+                });
             });
-        });
     </script>
 </body>
 </html>

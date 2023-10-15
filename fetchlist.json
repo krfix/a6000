@@ -1,36 +1,238 @@
 {
-    "imageSources": [
-        "./gallery/DSC01727.jpg",
-        "./gallery/DSC01728.jpg",
-        "./gallery/DSC01349.jpg",
-        "./gallery/DSC01364.jpg",
-        "./gallery/DSC01426.jpg",
-        "./gallery/DSC01622.jpg",
-        "./gallery/DSC01630.jpg",
-        "./gallery/DSC01653.jpg",
-        "./gallery/DSC01663.jpg",
-        "./gallery/DSC01667.jpg",
-        "./gallery/DSC01669.jpg",
-        "./gallery/DSC01693.jpg",
-        "./gallery/DSC01709.jpg",
-        "./gallery/DSC01724.jpg",
-        "./gallery/DSC01726.jpg"
-    ],
-    "thumbnailSources": [
-        "./thumbnails/DSC01727.jpg",
-        "./thumbnails/DSC01728.jpg",
-        "./thumbnails/DSC01349.jpg",
-        "./thumbnails/DSC01364.jpg",
-        "./thumbnails/DSC01426.jpg",
-        "./thumbnails/DSC01622.jpg",
-        "./thumbnails/DSC01630.jpg",
-        "./thumbnails/DSC01653.jpg",
-        "./thumbnails/DSC01663.jpg",
-        "./thumbnails/DSC01667.jpg",
-        "./thumbnails/DSC01669.jpg",
-        "./thumbnails/DSC01693.jpg",
-        "./thumbnails/DSC01709.jpg",
-        "./thumbnails/DSC01724.jpg",
-        "./thumbnails/DSC01726.jpg"
+    "images": [
+        {
+            "src": "./gallery/DSC01609.webp",
+            "thumbnailSrc": "./thumbnails/DSC01609.webp",
+            "info": {
+                "Dimensions": "6000x4000",
+                "FocalLength": "50mm",
+                "Exposure": "1/50s",
+                "fStop": "f/5.6",
+                "ISO": "ISO500",
+                "Lens": "E PZ 16-50mm F3.5-5.6 OSS",
+                "Model": "SONY ILCE-6000"
+            }
+        },
+        {
+            "src": "./gallery/DSC01622.webp",
+            "thumbnailSrc": "./thumbnails/DSC01622.webp",
+            "info": {
+                "Dimensions": "6000x4000",
+                "FocalLength": "50mm",
+                "Exposure": "1/25s",
+                "fStop": "f/5.6",
+                "ISO": "ISO1000",
+                "Lens": "E PZ 16-50mm F3.5-5.6 OSS",
+                "Model": "SONY ILCE-6000"
+            }
+        },
+        {
+            "src": "./gallery/DSC01630.webp",
+            "thumbnailSrc": "./thumbnails/DSC01630.webp",
+            "info": {
+                "Dimensions": "6000x4000",
+                "FocalLength": "50mm",
+                "Exposure": "1/50s",
+                "fStop": "f/5.6",
+                "ISO": "ISO4000",
+                "Lens": "E PZ 16-50mm F3.5-5.6 OSS",
+                "Model": "SONY ILCE-6000"
+            }
+        },
+        {
+            "src": "./gallery/DSC01651.webp",
+            "thumbnailSrc": "./thumbnails/DSC01651.webp",
+            "info": {
+                "Dimensions": "6000x4000",
+                "FocalLength": "50mm",
+                "Exposure": "1/2500s",
+                "fStop": "f/5.6",
+                "ISO": "ISO640",
+                "Lens": "E PZ 16-50mm F3.5-5.6 OSS",
+                "Model": "SONY ILCE-6000"
+            }
+        },
+        {
+            "src": "./gallery/DSC01663.webp",
+            "thumbnailSrc": "./thumbnails/DSC01663.webp",
+            "info": {
+                "Dimensions": "6000x4000",
+                "FocalLength": "40mm",
+                "Exposure": "1/500s",
+                "fStop": "f/5.6",
+                "ISO": "ISO1000",
+                "Lens": "E PZ 16-50mm F3.5-5.6 OSS",
+                "Model": "SONY ILCE-6000"
+            }
+        },
+        {
+            "src": "./gallery/DSC01666.webp",
+            "thumbnailSrc": "./thumbnails/DSC01666.webp",
+            "info": {
+                "Dimensions": "6000x4000",
+                "FocalLength": "50mm",
+                "Exposure": "1/160s",
+                "fStop": "f/5.6",
+                "ISO": "ISO125",
+                "Lens": "E PZ 16-50mm F3.5-5.6 OSS",
+                "Model": "SONY ILCE-6000"
+            }
+        },
+        {
+            "src": "./gallery/DSC01669.webp",
+            "thumbnailSrc": "./thumbnails/DSC01669.webp",
+            "info": {
+                "Dimensions": "6000x4000",
+                "FocalLength": "50mm",
+                "Exposure": "1/200s",
+                "fStop": "f/5.6",
+                "ISO": "ISO125",
+                "Lens": "E PZ 16-50mm F3.5-5.6 OSS",
+                "Model": "SONY ILCE-6000"
+            }
+        },
+        {
+            "src": "./gallery/DSC01676.webp",
+            "thumbnailSrc": "./thumbnails/DSC01676.webp",
+            "info": {
+                "Dimensions": "6000x4000",
+                "FocalLength": "50mm",
+                "Exposure": "1/1600s",
+                "fStop": "f/5.6",
+                "ISO": "ISO2500",
+                "Lens": "E PZ 16-50mm F3.5-5.6 OSS",
+                "Model": "SONY ILCE-6000"
+            }
+        },
+        {
+            "src": "./gallery/DSC01693.webp",
+            "thumbnailSrc": "./thumbnails/DSC01693.webp",
+            "info": {
+                "Dimensions": "6000x4000",
+                "FocalLength": "50mm",
+                "Exposure": "1/320s",
+                "fStop": "f/5.6",
+                "ISO": "ISO200",
+                "Lens": "E PZ 16-50mm F3.5-5.6 OSS",
+                "Model": "SONY ILCE-6000"
+            }
+        },
+        {
+            "src": "./gallery/DSC01709.webp",
+            "thumbnailSrc": "./thumbnails/DSC01709.webp",
+            "info": {
+                "Dimensions": "6000x4000",
+                "FocalLength": "50mm",
+                "Exposure": "1/500s",
+                "fStop": "f/5.6",
+                "ISO": "ISO25600",
+                "Lens": "E PZ 16-50mm F3.5-5.6 OSS",
+                "Model": "SONY ILCE-6000"
+            }
+        },
+        {
+            "src": "./gallery/DSC01717.webp",
+            "thumbnailSrc": "./thumbnails/DSC01717.webp",
+            "info": {
+                "Dimensions": "6000x4000",
+                "FocalLength": "50mm",
+                "Exposure": "1/400s",
+                "fStop": "f/5.6",
+                "ISO": "ISO25600",
+                "Lens": "E PZ 16-50mm F3.5-5.6 OSS",
+                "Model": "SONY ILCE-6000"
+            }
+        },
+        {
+            "src": "./gallery/DSC01726.webp",
+            "thumbnailSrc": "./thumbnails/DSC01726.webp",
+            "info": {
+                "Dimensions": "6000x4000",
+                "FocalLength": "50mm",
+                "Exposure": "1/500s",
+                "fStop": "f/5.6",
+                "ISO": "ISO5000",
+                "Lens": "E PZ 16-50mm F3.5-5.6 OSS",
+                "Model": "SONY ILCE-6000"
+            }
+        },
+        {
+            "src": "./gallery/DSC01727.webp",
+            "thumbnailSrc": "./thumbnails/DSC01727.webp",
+            "info": {
+                "Dimensions": "6000x4000",
+                "FocalLength": "50mm",
+                "Exposure": "1/640s",
+                "fStop": "f/5.6",
+                "ISO": "ISO6400",
+                "Lens": "E PZ 16-50mm F3.5-5.6 OSS",
+                "Model": "SONY ILCE-6000"
+            }
+        },
+        {
+            "src": "./gallery/DSC01733.webp",
+            "thumbnailSrc": "./thumbnails/DSC01733.webp",
+            "info": {
+                "Dimensions": "6000x4000",
+                "FocalLength": "50mm",
+                "Exposure": "1/40s",
+                "fStop": "f/5.6",
+                "ISO": "ISO2500",
+                "Lens": "E PZ 16-50mm F3.5-5.6 OSS",
+                "Model": "SONY ILCE-6000"
+            }
+        },
+        {
+            "src": "./gallery/DSC01735.webp",
+            "thumbnailSrc": "./thumbnails/DSC01735.webp",
+            "info": {
+                "Dimensions": "6000x4000",
+                "FocalLength": "50mm",
+                "Exposure": "1/40s",
+                "fStop": "f/5.6",
+                "ISO": "ISO3200",
+                "Lens": "E PZ 16-50mm F3.5-5.6 OSS",
+                "Model": "SONY ILCE-6000"
+            }
+        },
+        {
+            "src": "./gallery/DSC01736.webp",
+            "thumbnailSrc": "./thumbnails/DSC01736.webp",
+            "info": {
+                "Dimensions": "6000x4000",
+                "FocalLength": "16mm",
+                "Exposure": "1/80s",
+                "fStop": "f/3.5",
+                "ISO": "ISO800",
+                "Lens": "E PZ 16-50mm F3.5-5.6 OSS",
+                "Model": "SONY ILCE-6000"
+            }
+        },
+        {
+            "src": "./gallery/DSC01738.webp",
+            "thumbnailSrc": "./thumbnails/DSC01738.webp",
+            "info": {
+                "Dimensions": "6000x4000",
+                "FocalLength": "41mm",
+                "Exposure": "1/80s",
+                "fStop": "f/5.6",
+                "ISO": "ISO1250",
+                "Lens": "E PZ 16-50mm F3.5-5.6 OSS",
+                "Model": "SONY ILCE-6000"
+            }
+        },
+        {
+            "src": "./gallery/DSC01740.webp",
+            "thumbnailSrc": "./thumbnails/DSC01740.webp",
+            "info": {
+                "Dimensions": "6000x4000",
+                "FocalLength": "50mm",
+                "Exposure": "1/80s",
+                "fStop": "f/5.6",
+                "ISO": "ISO1000",
+                "Lens": "E PZ 16-50mm F3.5-5.6 OSS",
+                "Model": "SONY ILCE-6000"
+            }
+        }
     ]
 }
