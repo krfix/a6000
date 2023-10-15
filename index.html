@@ -116,7 +116,7 @@
     <div class="overlay" id="overlay" onclick="closeModal()"></div>
 
     <script>
-const imageContainer = document.getElementById("imageContainer");
+        const imageContainer = document.getElementById("imageContainer");
         const modal = document.getElementById("imageModal");
         const modalImg = document.getElementById("modalImage");
         let currentHoveredThumbnail = null;
@@ -126,7 +126,7 @@ const imageContainer = document.getElementById("imageContainer");
         function closeModal() {
             modal.style.display = "none";
         }        
-        
+
         fetch("fetchlist.json")
         .then(response => response.json())
         .then(data => {
@@ -192,6 +192,6 @@ const imageContainer = document.getElementById("imageContainer");
                 
             });
         });
-        </script>
-        </body>
+    </script>
+</body>
 </html>
