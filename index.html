@@ -31,25 +31,44 @@
         }
 
         .image-info-container {
-            position: absolute;
-            display: flex;
-            margin: -8px;
-            bottom: 0; /* Stick to the bottom of the modal */
-            width: flex;
-            background: rgba(0, 0, 0, 0);
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            padding: 0px;
-            overflow-x: auto;
-            color: #FFF;
-        }
+    position: absolute;
+    display: flex;
+    margin: 0px;
+    bottom: 0; /* Stick to the bottom of the modal */
+    background: rgba(0, 0, 0, 0);
+    flex-direction: row; /* Change flex direction to column */
+    align-items: flex-start;
+    padding: 0px;
+    overflow-x: auto;
+    color: #FFF;
+}
 
-        .image-info-container p {
-            display: inline;
-            margin-right: 10px;
-            font-family: 'Open Sans';
-        }
+.image-info-container p {
+    margin-right: 10px;
+    font-family: 'Open Sans';
+    margin-bottom: 0px; /* Add margin-bottom to create stacking effect */
+}
+
+@media (min-width: 300px) and (max-width: 600px) {
+    .image-info-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+    .image-info-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .image-info-container p {
+        margin-right: 10px;
+        margin-bottom: 0;
+    }
+}
+
+
 
 
         @media (min-width: 600px) {
