@@ -250,8 +250,17 @@
         showNextImage();
     }
 });
-
-                function showNextImage() {
+function updateImageInfo(image) {
+    // Update image information in the modal
+    document.getElementById("Dimensions").textContent = image.info.Dimensions;
+    document.getElementById("FocalLength").textContent = image.info.FocalLength;
+    document.getElementById("Exposure").textContent = image.info.Exposure;
+    document.getElementById("fStop").textContent = image.info.fStop;
+    document.getElementById("ISO").textContent = image.info.ISO;
+    document.getElementById("Lens").textContent = image.info.Lens;
+    document.getElementById("Model").textContent = image.info.Model;
+}
+function showNextImage() {
     currentImageIndex = (currentImageIndex + 1) % images.length;
     modalImg.src = images[currentImageIndex].src;
     updateImageInfo(images[currentImageIndex]);
@@ -261,10 +270,10 @@ function showPreviousImage() {
     currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
     modalImg.src = images[currentImageIndex].src;
     updateImageInfo(images[currentImageIndex]);
-}
 
+    
 
-                document.addEventListener("keydown", (e) => {
+}                document.addEventListener("keydown", (e) => {
     if (modal.style.display === "block") {
         if (e.key === "ArrowLeft") {
             showPreviousImage();
@@ -273,10 +282,6 @@ function showPreviousImage() {
         } else if (e.key === "Escape") {
             closeModal();
         }
-
-        
-
-
         // Update image information in the modal
         const currentImage = images[currentImageIndex];
         document.getElementById("Dimensions").textContent = currentImage.info.Dimensions;
@@ -288,7 +293,6 @@ function showPreviousImage() {
         document.getElementById("Model").textContent = currentImage.info.Model;
     }
 });
-
             });
     </script>
 </body>
