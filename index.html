@@ -70,6 +70,9 @@
             }
         }
 
+
+
+
         @media (min-width: 600px) {
             #imageContainer {
                 column-count: 2;
@@ -169,7 +172,6 @@
             </div>
         </div>
     </div>
-    <div class="overlay" id="overlay" onclick="closeModal()"></div>
 
     <script>
         const imageContainer = document.getElementById("imageContainer");
@@ -182,69 +184,62 @@
         const ISO = document.getElementById("ISO");
         const Lens = document.getElementById("Lens");
         const Model = document.getElementById("Model");
-
-        let currentHoveredThumbnail = null;
+        const preloadedImages = [];
+        let currentImageIndex = 0;
         let images = [];
+    
 
-        function preload(imageArray, index) {
-            index = index || 0;
-            if (imageArray && imageArray.length > index) {
-                var img = new Image();
-                img.onload = function () {
-                    preload(imageArray, index + 1);
-                }
-                img.src = imageArray[index].src; // Assuming your image metadata has a 'src' property
-            }
-        }
 
         function closeModal() {
             modal.style.display = "none";
         }
 
+        function preload(imageArray, index) {
+    index = index || 0;
+    if (imageArray && imageArray.length > index) {
+        var img = new Image();
+        img.onload = function () {
+            preloadedImages.push(img);
+            preload(imageArray, index + 1);
+        };
+        img.src = imageArray[index].src; // Use the "src" property from the JSON data
+    }
+}
+        
         fetch("fetchlist.json")
-    .then(response => response.json())
-    .then(data => {
-        images = data.images; // Store the image data
+            .then(response => response.json())
+            .then(data => {
+                images = data.images;
 
-        // Loop through the image data and create image elements
-        for (let i = 0; i < images.length; i++) {
-            const image = document.createElement("div");
-            image.className = "image";
-            const img = document.createElement("img");
-            img.src = images[i].thumbnailSrc;
-            img.alt = images[i].src;
-            img.setAttribute("data-src", images[i].src);
-            img.onmouseover = () => preloadImage(img);
-            img.onclick = () => openModal(images[i]);
-            image.appendChild(img);
-            imageContainer.appendChild(image);
+                // Preload all full-size images sequentially
+                preload(images);
+
+                // Loop through the image data and create image elements
+                for (let i = 0; i < images.length; i++) {
+                    const image = document.createElement("div");
+                    image.className = "image";
+                    const img = document.createElement("img");
+                    img.src = images[i].thumbnailSrc;
+                    img.alt = images[i].src;
+                    img.setAttribute("data-src", images[i].src);
+                    img.onclick = () => openModal(images[i]);
+                    image.appendChild(img);
+                    imageContainer.appendChild(image);
+                }
+            });
+   
+
+        
+
+            function openModal(image) {
+            modal.style.display = "block";
+            currentImageIndex = images.indexOf(image);
+
+            if (currentImageIndex !== -1) {
+                modalImg.src = preloadedImages[currentImageIndex].src;
+                updateImageInfo(images[currentImageIndex]);
+            }
         }
-
-        // Preload all full-size images
-        preload(images);
-
-        // Rest of your code...
-    });
-
-
-                function preloadImage(img) {
-                    const fullSrc = img.getAttribute("data-src");
-                    if (fullSrc) {
-                        const fullImage = new Image();
-                        fullImage.src = fullSrc;
-                        img.removeAttribute("data-src"); // Remove the data-src to prevent duplicate preload
-                    }
-                }
-
-                let currentImageIndex = 0;
-
-                function openModal(image) {
-                    modal.style.display = "block";
-                    modalImg.src = image.src;
-                    currentImageIndex = images.indexOf(image);
-                    // Display the additional information in the modal
-                    updateImageInfo(image);
-                }
 
                 modalImg.addEventListener("click", function (e) {
     const width = this.clientWidth;
@@ -278,9 +273,10 @@ function showPreviousImage() {
     currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
     modalImg.src = images[currentImageIndex].src;
     updateImageInfo(images[currentImageIndex]);
-}   
 
-    document.addEventListener("keydown", (e) => {
+    
+
+}                document.addEventListener("keydown", (e) => {
     if (modal.style.display === "block") {
         if (e.key === "ArrowLeft") {
             showPreviousImage();
@@ -289,7 +285,7 @@ function showPreviousImage() {
         } else if (e.key === "Escape") {
             closeModal();
         }
-        updateImageInfo(image);    }
+updateImageInfo(image);    }
 });
             
     </script>
