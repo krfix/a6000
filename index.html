@@ -188,23 +188,21 @@
         let currentImageIndex = 0;
         let images = [];
     
-
-
         function closeModal() {
             modal.style.display = "none";
         }
 
         function preload(imageArray, index) {
-    index = index || 0;
-    if (imageArray && imageArray.length > index) {
-        var img = new Image();
-        img.onload = function () {
-            preloadedImages.push(img);
-            preload(imageArray, index + 1);
-        };
-        img.src = imageArray[index].src; // Use the "src" property from the JSON data
-    }
-}
+            index = index || 0;
+            if (imageArray && imageArray.length > index) {
+                var img = new Image();
+                img.onload = function () {
+                    preloadedImages.push(img);
+                    preload(imageArray, index + 1);
+                };
+                img.src = imageArray[index].src; // Use the "src" property from the JSON data
+            }
+        }
         
         fetch("fetchlist.json")
             .then(response => response.json())
@@ -231,19 +229,19 @@
 
         
 
-            function openModal(image) {
-            modal.style.display = "block";
-            currentImageIndex = images.indexOf(image);
+        function openModal(image) {
+        modal.style.display = "block";
+        currentImageIndex = images.indexOf(image);
 
-            if (currentImageIndex !== -1) {
+        if (currentImageIndex !== -1) {
                 modalImg.src = preloadedImages[currentImageIndex].src;
                 updateImageInfo(images[currentImageIndex]);
-            }
+        }
         }
 
-                modalImg.addEventListener("click", function (e) {
-    const width = this.clientWidth;
-    const x = e.offsetX;
+        modalImg.addEventListener("click", function (e) {
+        const width = this.clientWidth;
+        const x = e.offsetX;
 
     if (x < width / 2) {
         // Clicked on the left side of the image
