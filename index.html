@@ -227,15 +227,8 @@
                     modal.style.display = "block";
                     modalImg.src = image.src;
                     currentImageIndex = images.indexOf(image);
-
                     // Display the additional information in the modal
-                    document.getElementById("Dimensions").textContent = image.info.Dimensions;
-                    document.getElementById("FocalLength").textContent = image.info.FocalLength;
-                    document.getElementById("Exposure").textContent = image.info.Exposure;
-                    document.getElementById("fStop").textContent = image.info.fStop;
-                    document.getElementById("ISO").textContent = image.info.ISO;
-                    document.getElementById("Lens").textContent = image.info.Lens;
-                    document.getElementById("Model").textContent = image.info.Model;
+                    updateImageInfo(image);
                 }
 
                 modalImg.addEventListener("click", function (e) {
