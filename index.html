@@ -175,6 +175,7 @@
     <div class="overlay" id="overlay" onclick="closeModal()"></div>
 
     <script>
+        const preloadedImages = [];
         const imageContainer = document.getElementById("imageContainer");
         const modal = document.getElementById("imageModal");
         const modalImg = document.getElementById("modalImage");
@@ -218,25 +219,22 @@
                         const fullImage = new Image();
                         fullImage.src = fullSrc;
                         img.removeAttribute("data-src"); // Remove the data-src to prevent duplicate preload
+                        preloadedImages.push(fullImage); // Store the preloaded image
                     }
                 }
 
                 let currentImageIndex = 0;
 
                 function openModal(image) {
-                    modal.style.display = "block";
-                    modalImg.src = image.src;
-                    currentImageIndex = images.indexOf(image);
+    modal.style.display = "block";
+    modalImg.src = preloadedImages[currentImageIndex].src; // Use the preloaded image
+    currentImageIndex = images.indexOf(image);
 
-                    // Display the additional information in the modal
-                    document.getElementById("Dimensions").textContent = image.info.Dimensions;
-                    document.getElementById("FocalLength").textContent = image.info.FocalLength;
-                    document.getElementById("Exposure").textContent = image.info.Exposure;
-                    document.getElementById("fStop").textContent = image.info.fStop;
-                    document.getElementById("ISO").textContent = image.info.ISO;
-                    document.getElementById("Lens").textContent = image.info.Lens;
-                    document.getElementById("Model").textContent = image.info.Model;
-                }
+    // Display the additional information in the modal
+    updateImageInfo(image);
+}
+
+                  
 
                 modalImg.addEventListener("click", function (e) {
     const width = this.clientWidth;
